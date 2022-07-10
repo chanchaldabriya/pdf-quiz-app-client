@@ -19,6 +19,7 @@ import { PARSED_QUESTIONS, PARSED_ANSWERS } from '../../constants/localStorageCo
 import { setLocalStorage } from '../../util/jsUtils';
 import useFormInput from '../../hooks/useFormInput';
 import { appendQueryParams } from '../../util/common';
+import { PARSE_QUESTIONS_API_URL, PARSE_ANSWERS_API_URL } from '../../constants/apiConstants';
 
 const useStyles = makeStyles({
     card: theme => ({
@@ -110,7 +111,7 @@ const CreateQuiz = ({
             ...(maxQuestionPages && {maxPages: maxQuestionPages}),
         };
 
-        const url = appendQueryParams("http://localhost:4000/parseQuestions", params);
+        const url = appendQueryParams(PARSE_QUESTIONS_API_URL, params);
         uploadFile(formData, url, setQuestions, PARSED_QUESTIONS);
     };
 
@@ -121,7 +122,7 @@ const CreateQuiz = ({
             ...(maxAnswerPages && {maxPages: maxAnswerPages}),
         };
 
-        const url = appendQueryParams("http://localhost:4000/parseAnswers", params);
+        const url = appendQueryParams(PARSE_ANSWERS_API_URL, params);
         uploadFile(formData, url, setAnswers, PARSED_ANSWERS);
     };
 
