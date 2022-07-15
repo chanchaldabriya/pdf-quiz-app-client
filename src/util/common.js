@@ -1,10 +1,7 @@
 export const appendQueryParams = (url, requestObj) => {
     let newUrl = url;
     Object.keys(requestObj).forEach((prop, index) => {
-        if (index === 0) {
-            newUrl += "?";
-        }
-        newUrl += `${prop}=${requestObj[ prop ]}`;
+        newUrl += `${index === 0 ? "?" : "&"}${prop}=${requestObj[ prop ]}`;
     });
     return newUrl;
 };
